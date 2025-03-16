@@ -6,21 +6,45 @@ import { Button } from "@/components/ui/button";
 const testimonials = [
   {
     id: 1,
-    content: "Working with Paul & Cami transformed both my business approach and personal outlook. Their holistic coaching helped me increase revenue by 40% while reclaiming work-life balance.",
-    author: "Sarah Johnson",
-    position: "CEO, TechStart Solutions"
+    content: "I started the sessions with Paul & Cami without really knowing what I wanted, but after just a few meetings I gained a clear direction. They helped me discover my true motivation and take concrete steps toward my goals.",
+    author: "Dana",
+    position: ""
   },
   {
     id: 2,
-    content: "The business strategies Paul & Cami helped me implement were game-changing, but even more valuable was their guidance on aligning my company's growth with my personal values and vision.",
-    author: "Michael Chen",
-    position: "Founder, GreenPath Ventures"
+    content: "I am deeply grateful for the support I received. Paul guided me through the process of developing my business, and I saw real results in just a few months!",
+    author: "Radu",
+    position: ""
   },
   {
     id: 3,
-    content: "I was skeptical about coaching, but Paul & Cami's approach is different - practical, personalized and powerful. In six months, I've achieved more clarity and progress than in the previous three years.",
-    author: "Amelia Rodriguez",
-    position: "Director, Global Innovations"
+    content: "Cami has a warm and empathetic approach. She helped me better manage my emotions and regain my confidence. I wholeheartedly recommend her!",
+    author: "Raul",
+    position: ""
+  },
+  {
+    id: 4,
+    content: "I didn't believe I would be able to find solutions to my career problems so quickly, but with Paul's help, I managed to clarify my next steps and secure a new job.",
+    author: "Olivia",
+    position: ""
+  },
+  {
+    id: 5,
+    content: "Coaching with Cami was exactly what I needed. She motivated me to change my mindset and see opportunities where before I only saw obstacles.",
+    author: "Isabella",
+    position: ""
+  },
+  {
+    id: 6,
+    content: "Their coaching program is well-structured and tailored to my needs. I have learned to be more confident in myself and make better decisions, both at work and in my personal life.",
+    author: "George",
+    position: ""
+  },
+  {
+    id: 7,
+    content: "I confidently recommend Paul & Cami to anyone seeking genuine change. With their help, I found balance between my professional and personal life, which brought me peace and fulfillment.",
+    author: "Marcu",
+    position: ""
   }
 ];
 
@@ -58,7 +82,6 @@ const TestimonialsSection = () => {
               </p>
               <div>
                 <p className="font-bold text-lg">{testimonials[activeIndex].author}</p>
-                <p className="text-softGray">{testimonials[activeIndex].position}</p>
               </div>
             </div>
             
@@ -79,7 +102,7 @@ const TestimonialsSection = () => {
                   variant="outline" 
                   size="icon" 
                   onClick={handlePrev}
-                  className="rounded-full border-gold text-gold hover:bg-gold/10 hover:text-gold"
+                  className="rounded-full bg-black border-gold text-gold hover:bg-black hover:text-silver hover:border-silver"
                 >
                   <ArrowLeft className="h-4 w-4" />
                 </Button>
@@ -87,7 +110,7 @@ const TestimonialsSection = () => {
                   variant="outline" 
                   size="icon" 
                   onClick={handleNext}
-                  className="rounded-full border-gold text-gold hover:bg-gold/10 hover:text-gold"
+                  className="rounded-full bg-black border-gold text-gold hover:bg-black hover:text-silver hover:border-silver"
                 >
                   <ArrowRight className="h-4 w-4" />
                 </Button>

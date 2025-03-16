@@ -1,5 +1,23 @@
 
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+
+// Custom X icon (formerly Twitter)
+const XIcon = () => (
+  <svg 
+    viewBox="0 0 24 24" 
+    width="24" 
+    height="24" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    fill="none" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className="h-5 w-5"
+  >
+    <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+  </svg>
+);
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -33,7 +51,7 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5 text-gold" />
               </a>
               <a href="#" className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
-                <Twitter className="h-5 w-5 text-gold" />
+                <XIcon />
               </a>
             </div>
           </div>

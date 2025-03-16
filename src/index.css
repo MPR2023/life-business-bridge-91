@@ -104,3 +104,14 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
 }
+
+/* Button styling */
+.btn-black-gold {
+  @apply bg-black text-gold border border-gold hover:text-silver hover:border-silver transition-colors;
+}
+
+/* Button hover states */
+button:hover .text-gold, 
+a:hover .text-gold {
+  @apply text-silver transition-colors;
+}
