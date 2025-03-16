@@ -5,56 +5,60 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-charcoal text-white pt-16 pb-8">
+    <footer className="bg-black text-silver pt-16 pb-8 border-t border-gold/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* About */}
           <div>
             <div className="mb-4">
-              <span className="text-2xl font-bold gold-gradient">PAUL&CAMI</span>
+              <img 
+                src="/public/lovable-uploads/634ec27f-ca3c-41de-9de4-35135fa27955.png" 
+                alt="PAUL&CAMI" 
+                className="h-10 w-auto"
+              />
             </div>
-            <p className="text-gray-300 mb-4">
+            <p className="text-silver mb-4">
               Transforming businesses and lives through expert coaching and guidance.
               Your vision, our guidance, endless possibilities.
             </p>
             
             <div className="flex space-x-3">
-              <a href="#" className="bg-white/10 hover:bg-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
-                <Facebook className="h-5 w-5" />
+              <a href="#" className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
+                <Facebook className="h-5 w-5 text-gold" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
-                <Instagram className="h-5 w-5" />
+              <a href="#" className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
+                <Instagram className="h-5 w-5 text-gold" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
-                <Linkedin className="h-5 w-5" />
+              <a href="#" className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
+                <Linkedin className="h-5 w-5 text-gold" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
-                <Twitter className="h-5 w-5" />
+              <a href="#" className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
+                <Twitter className="h-5 w-5 text-gold" />
               </a>
             </div>
           </div>
           
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-bold mb-4 gold-gradient">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="text-gray-300 hover:text-gold transition-colors">
+                <a href="#about" className="text-silver hover:text-gold transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-gold transition-colors">
+                <a href="#services" className="text-silver hover:text-gold transition-colors">
                   Our Services
                 </a>
               </li>
               <li>
-                <a href="#testimonials" className="text-gray-300 hover:text-gold transition-colors">
+                <a href="#testimonials" className="text-silver hover:text-gold transition-colors">
                   Testimonials
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-gray-300 hover:text-gold transition-colors">
+                <a href="#contact" className="text-silver hover:text-gold transition-colors">
                   Contact
                 </a>
               </li>
@@ -63,26 +67,26 @@ const Footer = () => {
           
           {/* Services */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Our Services</h3>
+            <h3 className="text-lg font-bold mb-4 gold-gradient">Our Services</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#services" className="text-gray-300 hover:text-gold transition-colors">
+                <a href="#services" className="text-silver hover:text-gold transition-colors">
                   Business Coaching
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-gold transition-colors">
+                <a href="#services" className="text-silver hover:text-gold transition-colors">
                   Life Coaching
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-gold transition-colors">
-                  Executive Mentoring
+                <a href="#services" className="text-silver hover:text-gold transition-colors">
+                  Career Coaching
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-gold transition-colors">
-                  Team Building Workshops
+                <a href="#services" className="text-silver hover:text-gold transition-colors">
+                  Leadership Coaching
                 </a>
               </li>
             </ul>
@@ -90,32 +94,42 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Contact Us</h3>
+            <h3 className="text-lg font-bold mb-4 gold-gradient">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Mail className="h-5 w-5 text-gold mr-3 mt-0.5" />
-                <a href="mailto:info@paulandcami.com" className="text-gray-300 hover:text-gold transition-colors">
-                  info@paulandcami.com
-                </a>
+                <div>
+                  <a href="mailto:paul@paulandcami.com" className="text-silver hover:text-gold transition-colors block">
+                    paul@paulandcami.com
+                  </a>
+                  <a href="mailto:cami@paulandcami.com" className="text-silver hover:text-gold transition-colors block">
+                    cami@paulandcami.com
+                  </a>
+                </div>
               </li>
               <li className="flex items-start">
                 <Phone className="h-5 w-5 text-gold mr-3 mt-0.5" />
-                <a href="tel:+15551234567" className="text-gray-300 hover:text-gold transition-colors">
-                  +1 (555) 123-4567
-                </a>
+                <div>
+                  <a href="tel:+40753338026" className="text-silver hover:text-gold transition-colors block">
+                    Paul: +40 753 338 026
+                  </a>
+                  <a href="tel:+40740684901" className="text-silver hover:text-gold transition-colors block">
+                    Cami: +40 740 684 901
+                  </a>
+                </div>
               </li>
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-gold mr-3 mt-0.5" />
-                <address className="text-gray-300 not-italic">
-                  123 Success Avenue<br />
-                  San Francisco, CA 94103
+                <address className="text-silver not-italic">
+                  B-dul Decebal, nr. 2, cam. 210,<br />
+                  Arad, Romania
                 </address>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="pt-8 border-t border-white/10 text-center text-gray-400">
+        <div className="pt-8 border-t border-gold/20 text-center text-silver/70">
           <p>&copy; {currentYear} Paul & Cami Coaching. All rights reserved.</p>
         </div>
       </div>

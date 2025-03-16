@@ -55,6 +55,8 @@ export default {
 				},
 				gold: "#D4AF37",
 				softGold: "#E6C666",
+				silver: "#C0C0C0",
+				softSilver: "#D8D8D8",
 				charcoal: "#333333",
 				softGray: "#585858",
 				lightGray: "#F5F5F5",
