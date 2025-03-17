@@ -16,6 +16,7 @@ const ContactForm = () => {
     email: "",
     phone: "",
     service: "",
+    specialist: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,8 +26,8 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSelectChange = (value: string) => {
-    setFormData(prev => ({ ...prev, service: value }));
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -49,6 +50,7 @@ const ContactForm = () => {
         email: "",
         phone: "",
         service: "",
+        specialist: "",
         message: ""
       });
     }, 1500);
@@ -110,7 +112,7 @@ const ContactForm = () => {
           <label htmlFor="service" className="block text-sm font-medium text-silver mb-1">
             Service of Interest
           </label>
-          <Select value={formData.service} onValueChange={handleSelectChange}>
+          <Select value={formData.service} onValueChange={(value) => handleSelectChange("service", value)}>
             <SelectTrigger className="bg-black/50 border-gold/50 text-silver">
               <SelectValue placeholder="Select a service" />
             </SelectTrigger>
@@ -140,6 +142,21 @@ const ContactForm = () => {
             required
             className="w-full bg-black/50 border-gold/50 text-silver"
           />
+        </div>
+        
+        <div>
+          <label htmlFor="specialist" className="block text-sm font-medium text-silver mb-1">
+            Choose Your Specialist
+          </label>
+          <Select value={formData.specialist} onValueChange={(value) => handleSelectChange("specialist", value)}>
+            <SelectTrigger className="bg-black/50 border-gold/50 text-silver">
+              <SelectValue placeholder="Select a specialist" />
+            </SelectTrigger>
+            <SelectContent className="bg-black border-gold/50 text-silver">
+              <SelectItem value="paul" className="focus:bg-gold/20 focus:text-gold">Paul - paul@paulandcami.com</SelectItem>
+              <SelectItem value="cami" className="focus:bg-gold/20 focus:text-gold">Cami - cami@paulandcami.com</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         
         <Button 
