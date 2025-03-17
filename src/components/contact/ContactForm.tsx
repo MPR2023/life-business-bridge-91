@@ -9,10 +9,11 @@ import { Send } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import emailjs from 'emailjs-com';
 
-// EmailJS service IDs - you'll need to replace these with your actual service IDs
-const EMAIL_SERVICE_ID = "service_emailjs"; 
-const EMAIL_TEMPLATE_ID = "template_contact";
-const EMAIL_USER_ID = "your_user_id"; // Replace with your EmailJS user ID
+// EmailJS configuration with the provided service IDs
+const EMAIL_SERVICE_ID_PAUL = "service_pauls00"; 
+const EMAIL_SERVICE_ID_CAMI = "service_camis00";
+const EMAIL_TEMPLATE_ID = "template_contact"; // Using the template shown in the screenshot
+const EMAIL_USER_ID = "YmIIx_OoazHZzEpXe"; // This needs to be replaced with your actual EmailJS user ID
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -41,12 +42,16 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Determine recipient email based on specialist selection
-      const toEmail = formData.specialist === "paul" 
-        ? "paul@paulandcami.com" 
-        : "cami@paulandcami.com";
+      // Determine which service ID to use based on specialist selection
+      const serviceId = formData.specialist === "paul" 
+        ? EMAIL_SERVICE_ID_PAUL 
+        : EMAIL_SERVICE_ID_CAMI;
       
-      // Prepare template parameters for EmailJS
+      // Get recipient info
+      const toName = formData.specialist === "paul" ? "Paul" : "Cami";
+      const toEmail = `${formData.specialist}@paulandcami.com`;
+      
+      // Prepare template parameters for EmailJS based on the template in the screenshot
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -54,12 +59,15 @@ const ContactForm = () => {
         service_interest: formData.service,
         message: formData.message,
         to_email: toEmail,
-        to_name: formData.specialist === "paul" ? "Paul" : "Cami"
+        to_name: toName
       };
+      
+      console.log("Sending email with params:", templateParams);
+      console.log("Using service ID:", serviceId);
       
       // Send the email using EmailJS
       await emailjs.send(
-        EMAIL_SERVICE_ID,
+        serviceId,
         EMAIL_TEMPLATE_ID,
         templateParams,
         EMAIL_USER_ID
@@ -68,7 +76,7 @@ const ContactForm = () => {
       // Success message
       toast({
         title: "Message sent successfully!",
-        description: `Your message has been sent to ${formData.specialist === "paul" ? "Paul" : "Cami"}. We'll get back to you soon.`,
+        description: `Your message has been sent to ${toName}. We'll get back to you soon.`,
       });
       
       // Reset form
