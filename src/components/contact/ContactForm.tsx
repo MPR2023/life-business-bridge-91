@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,7 +12,7 @@ import emailjs from 'emailjs-com';
 const EMAIL_SERVICE_ID_PAUL = "service_pauls00"; 
 const EMAIL_SERVICE_ID_CAMI = "service_camis00";
 const EMAIL_TEMPLATE_ID = "template_contact"; // Using the template shown in the screenshot
-const EMAIL_USER_ID = "YmIIx_OoazHZzEpXe"; // This needs to be replaced with your actual EmailJS user ID
+const EMAIL_USER_ID = "bsTwIboddKtW0zlZY"; // Updated with the provided public key
 
 const ContactForm = () => {
   const { toast } = useToast();
