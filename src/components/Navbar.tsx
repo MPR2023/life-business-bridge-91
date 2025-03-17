@@ -32,7 +32,7 @@ const Navbar = () => {
           <a href="#services" className="text-silver hover:text-gold transition-colors duration-300">Services</a>
           <a href="#testimonials" className="text-silver hover:text-gold transition-colors duration-300">Testimonials</a>
           <a href="#contact">
-            <Button className="bg-silver hover:bg-silver/80 text-gold border border-gold">Contact Us</Button>
+            <Button className="bg-black text-gold border border-gold hover:bg-black hover:text-silver hover:border-silver transition-colors">Contact Us</Button>
           </a>
         </div>
 
@@ -78,7 +78,7 @@ const Navbar = () => {
               href="#contact"
               onClick={() => setIsMenuOpen(false)}
             >
-              <Button className="bg-silver hover:bg-silver/80 text-gold border border-gold w-full">Contact Us</Button>
+              <Button className="bg-black text-gold border border-gold hover:bg-black hover:text-silver hover:border-silver transition-colors w-full">Contact Us</Button>
             </a>
           </div>
         </div>

@@ -12,7 +12,7 @@ const XIcon = () => (
     fill="none" 
     strokeLinecap="round" 
     strokeLinejoin="round" 
-    className="h-5 w-5"
+    className="h-5 w-5 text-gold"
   >
     <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
     <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
@@ -41,16 +41,36 @@ const Footer = () => {
             </p>
             
             <div className="flex space-x-3">
-              <a href="#" className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61572141846128" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+              >
                 <Facebook className="h-5 w-5 text-gold" />
               </a>
-              <a href="#" className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
+              <a 
+                href="https://www.instagram.com/paul_n_cami/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+              >
                 <Instagram className="h-5 w-5 text-gold" />
               </a>
-              <a href="#" className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
+              <a 
+                href="https://www.linkedin.com/company/paulandcami" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+              >
                 <Linkedin className="h-5 w-5 text-gold" />
               </a>
-              <a href="#" className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300">
+              <a 
+                href="https://x.com/_Coach_Paul_" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
+              >
                 <XIcon />
               </a>
             </div>
