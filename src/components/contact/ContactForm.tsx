@@ -7,6 +7,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/components/ui/use-toast";
 import { Send } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import emailjs from 'emailjs-com';
+
+// EmailJS service IDs - you'll need to replace these with your actual service IDs
+const EMAIL_SERVICE_ID = "service_emailjs"; 
+const EMAIL_TEMPLATE_ID = "template_contact";
+const EMAIL_USER_ID = "your_user_id"; // Replace with your EmailJS user ID
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -30,18 +36,39 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Determine recipient email based on specialist selection
+      const toEmail = formData.specialist === "paul" 
+        ? "paul@paulandcami.com" 
+        : "cami@paulandcami.com";
+      
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        from_phone: formData.phone,
+        service_interest: formData.service,
+        message: formData.message,
+        to_email: toEmail,
+        to_name: formData.specialist === "paul" ? "Paul" : "Cami"
+      };
+      
+      // Send the email using EmailJS
+      await emailjs.send(
+        EMAIL_SERVICE_ID,
+        EMAIL_TEMPLATE_ID,
+        templateParams,
+        EMAIL_USER_ID
+      );
       
       // Success message
       toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
+        title: "Message sent successfully!",
+        description: `Your message has been sent to ${formData.specialist === "paul" ? "Paul" : "Cami"}. We'll get back to you soon.`,
       });
       
       // Reset form
@@ -53,7 +80,21 @@ const ContactForm = () => {
         specialist: "",
         message: ""
       });
-    }, 1500);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Failed to send message",
+        description: "There was an error sending your message. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Make sure specialist is required
+  const isFormValid = () => {
+    return formData.name && formData.email && formData.message && formData.specialist;
   };
 
   return (
@@ -146,9 +187,13 @@ const ContactForm = () => {
         
         <div>
           <label htmlFor="specialist" className="block text-sm font-medium text-silver mb-1">
-            Choose Your Specialist
+            Choose Your Specialist <span className="text-red-400">*</span>
           </label>
-          <Select value={formData.specialist} onValueChange={(value) => handleSelectChange("specialist", value)}>
+          <Select 
+            value={formData.specialist} 
+            onValueChange={(value) => handleSelectChange("specialist", value)}
+            required
+          >
             <SelectTrigger className="bg-black/50 border-gold/50 text-silver">
               <SelectValue placeholder="Select a specialist" />
             </SelectTrigger>
@@ -162,7 +207,7 @@ const ContactForm = () => {
         <Button 
           type="submit" 
           className="w-full bg-black hover:bg-black text-gold border border-gold hover:text-silver hover:border-silver transition-colors"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !isFormValid()}
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">
