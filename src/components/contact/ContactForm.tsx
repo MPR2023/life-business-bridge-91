@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,11 +9,11 @@ import { Send } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import emailjs from 'emailjs-com';
 
-// EmailJS configuration with the provided service IDs
+// EmailJS configuration with the provided credentials
 const EMAIL_SERVICE_ID_PAUL = "service_pauls00"; 
 const EMAIL_SERVICE_ID_CAMI = "service_camis00";
-const EMAIL_TEMPLATE_ID = "template_contact"; // Using the template shown in the screenshot
-const EMAIL_USER_ID = "bsTwIboddKtW0zlZY"; // Updated with the provided public key
+const EMAIL_TEMPLATE_ID = "template_wuhgucm"; // Updated to the correct template ID
+const EMAIL_USER_ID = "bsTwIboddKtW0zlZY"; 
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -48,29 +49,30 @@ const ContactForm = () => {
       
       // Get recipient info
       const toName = formData.specialist === "paul" ? "Paul" : "Cami";
-      const toEmail = `${formData.specialist}@paulandcami.com`;
       
-      // Prepare template parameters for EmailJS based on the template in the screenshot
+      // Prepare template parameters for EmailJS
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         from_phone: formData.phone,
         service_interest: formData.service,
         message: formData.message,
-        to_email: toEmail,
         to_name: toName
       };
       
       console.log("Sending email with params:", templateParams);
       console.log("Using service ID:", serviceId);
+      console.log("Using template ID:", EMAIL_TEMPLATE_ID);
       
       // Send the email using EmailJS
-      await emailjs.send(
+      const response = await emailjs.send(
         serviceId,
         EMAIL_TEMPLATE_ID,
         templateParams,
         EMAIL_USER_ID
       );
+      
+      console.log("EmailJS response:", response);
       
       // Success message
       toast({
