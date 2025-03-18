@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,13 +6,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/components/ui/use-toast";
 import { Send } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import emailjs from 'emailjs-com';
 
-// EmailJS configuration with the provided credentials
-const EMAIL_SERVICE_ID_PAUL = "service_pauls00"; 
-const EMAIL_SERVICE_ID_CAMI = "service_camis00";
-const EMAIL_TEMPLATE_ID = "template_wuhgucm"; // Updated to the correct template ID
-const EMAIL_USER_ID = "bsTwIboddKtW0zlZY"; 
+const PAUL_EMAIL = "paul@paulandcami.com"; 
+const CAMI_EMAIL = "cami@paulandcami.com";
+const EMAIL_ENDPOINT = "https://yourwebsite.com/send-email.php";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -42,53 +38,47 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Determine which service ID to use based on specialist selection
-      const serviceId = formData.specialist === "paul" 
-        ? EMAIL_SERVICE_ID_PAUL 
-        : EMAIL_SERVICE_ID_CAMI;
-      
-      // Get recipient info
+      const toEmail = formData.specialist === "paul" ? PAUL_EMAIL : CAMI_EMAIL;
       const toName = formData.specialist === "paul" ? "Paul" : "Cami";
       
-      // Prepare template parameters for EmailJS
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        from_phone: formData.phone,
-        service_interest: formData.service,
-        message: formData.message,
-        to_name: toName
-      };
+      const formDataToSend = new URLSearchParams();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone || 'Not provided');
+      formDataToSend.append('service', formData.service || 'Not specified');
+      formDataToSend.append('message', formData.message);
+      formDataToSend.append('to_email', toEmail);
+      formDataToSend.append('to_name', toName);
       
-      console.log("Sending email with params:", templateParams);
-      console.log("Using service ID:", serviceId);
-      console.log("Using template ID:", EMAIL_TEMPLATE_ID);
+      console.log("Sending email to:", toEmail);
+      console.log("Form data:", Object.fromEntries(formDataToSend));
       
-      // Send the email using EmailJS
-      const response = await emailjs.send(
-        serviceId,
-        EMAIL_TEMPLATE_ID,
-        templateParams,
-        EMAIL_USER_ID
-      );
-      
-      console.log("EmailJS response:", response);
-      
-      // Success message
-      toast({
-        title: "Message sent successfully!",
-        description: `Your message has been sent to ${toName}. We'll get back to you soon.`,
+      const response = await fetch(EMAIL_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formDataToSend
       });
       
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        specialist: "",
-        message: ""
-      });
+      const result = await response.text();
+      console.log("Server response:", result);
+      
+      if (result === "success") {
+        toast({
+          title: "Message sent successfully!",
+          description: `Your message has been sent to ${toName}. We'll get back to you soon.`,
+        });
+        
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          specialist: "",
+          message: ""
+        });
+      } else {
+        throw new Error("Failed to send email");
+      }
     } catch (error) {
       console.error("Error sending email:", error);
       toast({
@@ -101,7 +91,6 @@ const ContactForm = () => {
     }
   };
 
-  // Make sure specialist is required
   const isFormValid = () => {
     return formData.name && formData.email && formData.message && formData.specialist;
   };
