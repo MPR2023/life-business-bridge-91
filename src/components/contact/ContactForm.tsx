@@ -1,10 +1,11 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
-import { Send } from "lucide-react";
+import { Send, AlertTriangle } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const PAUL_EMAIL = "paul@paulandcami.com"; 
@@ -17,12 +18,18 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     service: "",
     specialist: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [cookieConsent, setCookieConsent] = useState<string | null>(null);
+
+  // Check cookie consent status on component mount
+  useEffect(() => {
+    const consent = localStorage.getItem("cookiesAccepted");
+    setCookieConsent(consent);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -35,6 +42,17 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check if user has declined cookies
+    if (cookieConsent === "false") {
+      toast({
+        title: "Unable to send message",
+        description: "You need to accept our cookie policy to send messages. Please refresh the page and accept the cookie policy.",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
@@ -44,7 +62,6 @@ const ContactForm = () => {
       const formDataToSend = new URLSearchParams();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
-      formDataToSend.append('phone', formData.phone || 'Not provided');
       formDataToSend.append('service', formData.service || 'Not specified');
       formDataToSend.append('message', formData.message);
       formDataToSend.append('to_email', toEmail);
@@ -71,7 +88,6 @@ const ContactForm = () => {
         setFormData({
           name: "",
           email: "",
-          phone: "",
           service: "",
           specialist: "",
           message: ""
@@ -99,6 +115,19 @@ const ContactForm = () => {
     <div className="lg:col-span-3 bg-black p-6 md:p-8 rounded-lg shadow-sm border border-gold">
       <h3 className="text-2xl font-bold mb-6 gold-gradient">Send a Message</h3>
       
+      {cookieConsent === "false" && (
+        <div className="mb-6 p-4 border border-red-400 bg-red-900/20 rounded-md flex items-start">
+          <AlertTriangle className="text-red-400 mr-2 mt-0.5 flex-shrink-0" />
+          <div>
+            <p className="text-red-400 font-medium">Cookie Policy Declined</p>
+            <p className="text-silver text-sm mt-1">
+              You've declined our cookie policy. To send messages, you need to accept our cookie policy. 
+              Please refresh the page and accept when prompted.
+            </p>
+          </div>
+        </div>
+      )}
+      
       <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-silver mb-1">
@@ -112,46 +141,36 @@ const ContactForm = () => {
             placeholder="John Doe"
             required
             className="w-full bg-black/50 border-gold/50 text-silver"
+            disabled={cookieConsent === "false"}
           />
         </div>
         
-        <div className={`${isMobile ? 'space-y-4' : 'grid grid-cols-1 md:grid-cols-2 gap-5'}`}>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-silver mb-1">
-              Email Address
-            </label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="john@example.com"
-              required
-              className="w-full bg-black/50 border-gold/50 text-silver"
-            />
-          </div>
-          
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-silver mb-1">
-              Phone Number
-            </label>
-            <Input
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+40 700 000 000"
-              className="w-full bg-black/50 border-gold/50 text-silver"
-            />
-          </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-silver mb-1">
+            Email Address
+          </label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="john@example.com"
+            required
+            className="w-full bg-black/50 border-gold/50 text-silver"
+            disabled={cookieConsent === "false"}
+          />
         </div>
         
         <div>
           <label htmlFor="service" className="block text-sm font-medium text-silver mb-1">
             Service of Interest
           </label>
-          <Select value={formData.service} onValueChange={(value) => handleSelectChange("service", value)}>
+          <Select 
+            value={formData.service} 
+            onValueChange={(value) => handleSelectChange("service", value)}
+            disabled={cookieConsent === "false"}
+          >
             <SelectTrigger className="bg-black/50 border-gold/50 text-silver">
               <SelectValue placeholder="Select a service" />
             </SelectTrigger>
@@ -180,6 +199,7 @@ const ContactForm = () => {
             rows={5}
             required
             className="w-full bg-black/50 border-gold/50 text-silver"
+            disabled={cookieConsent === "false"}
           />
         </div>
         
@@ -191,6 +211,7 @@ const ContactForm = () => {
             value={formData.specialist} 
             onValueChange={(value) => handleSelectChange("specialist", value)}
             required
+            disabled={cookieConsent === "false"}
           >
             <SelectTrigger className="bg-black/50 border-gold/50 text-silver">
               <SelectValue placeholder="Select a specialist" />
@@ -205,7 +226,7 @@ const ContactForm = () => {
         <Button 
           type="submit" 
           className="w-full bg-black hover:bg-black text-gold border border-gold hover:text-silver hover:border-silver transition-colors"
-          disabled={isSubmitting || !isFormValid()}
+          disabled={isSubmitting || !isFormValid() || cookieConsent === "false"}
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">
