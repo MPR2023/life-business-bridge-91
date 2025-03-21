@@ -1,5 +1,5 @@
 
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, FileText } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 
 // Custom X icon (formerly Twitter)
 const XIcon = () => (
@@ -100,11 +100,6 @@ const Footer = () => {
                   Contact
                 </a>
               </li>
-              <li>
-                <a href="/legal" className="text-silver hover:text-gold transition-colors flex items-center">
-                  <FileText className="h-4 w-4 mr-2" /> Legal & Privacy
-                </a>
-              </li>
             </ul>
           </div>
           
@@ -173,7 +168,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-gold/20 text-center text-silver/70">
-          <p>&copy; {currentYear} Paul & Cami Coaching. All rights reserved. <a href="/legal" className="hover:text-gold transition-colors">Legal & Privacy</a></p>
+          <p>&copy; {currentYear} Paul & Cami Coaching. All rights reserved.</p>
         </div>
       </div>
     </footer>
