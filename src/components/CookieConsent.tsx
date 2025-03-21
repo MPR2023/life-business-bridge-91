@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { FileText } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,13 +40,13 @@ const CookieConsent = () => {
           </p>
         </div>
         <div className="flex space-x-4">
-          <Link 
-            to="/legal#cookie-policy" 
+          <a 
+            href="/legal#cookie-policy" 
             className="inline-flex items-center justify-center text-sm text-gold hover:text-silver transition-colors"
           >
             <FileText className="h-4 w-4 mr-1" />
             Learn More
-          </Link>
+          </a>
           <Button 
             className="bg-black hover:bg-black text-gold border border-gold hover:text-silver hover:border-silver"
             onClick={handleAccept}
