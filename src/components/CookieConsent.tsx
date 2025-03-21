@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import { FileText } from "lucide-react";
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,8 +23,9 @@ const CookieConsent = () => {
     setIsVisible(false);
   };
 
-  const handleClose = () => {
-    setIsVisible(false);
+  const handleDecline = () => {
+    // Exit the website by redirecting to a different site
+    window.location.href = "https://www.google.com";
   };
 
   if (!isVisible) return null;
@@ -39,6 +40,13 @@ const CookieConsent = () => {
           </p>
         </div>
         <div className="flex space-x-4">
+          <a 
+            href="/legal#cookie-policy" 
+            className="inline-flex items-center justify-center text-sm text-gold hover:text-silver transition-colors"
+          >
+            <FileText className="h-4 w-4 mr-1" />
+            Learn More
+          </a>
           <Button 
             className="bg-black hover:bg-black text-gold border border-gold hover:text-silver hover:border-silver"
             onClick={handleAccept}
@@ -48,9 +56,9 @@ const CookieConsent = () => {
           <Button 
             variant="outline" 
             className="bg-black hover:bg-black border-gold text-gold hover:text-silver hover:border-silver"
-            onClick={handleClose}
+            onClick={handleDecline}
           >
-            <X className="h-4 w-4" />
+            Decline
           </Button>
         </div>
       </div>

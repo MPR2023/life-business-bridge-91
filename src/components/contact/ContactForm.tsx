@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,7 +18,6 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     service: "",
     specialist: "",
     message: ""
@@ -44,7 +44,6 @@ const ContactForm = () => {
       const formDataToSend = new URLSearchParams();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
-      formDataToSend.append('phone', formData.phone || 'Not provided');
       formDataToSend.append('service', formData.service || 'Not specified');
       formDataToSend.append('message', formData.message);
       formDataToSend.append('to_email', toEmail);
@@ -71,7 +70,6 @@ const ContactForm = () => {
         setFormData({
           name: "",
           email: "",
-          phone: "",
           service: "",
           specialist: "",
           message: ""
@@ -115,36 +113,20 @@ const ContactForm = () => {
           />
         </div>
         
-        <div className={`${isMobile ? 'space-y-4' : 'grid grid-cols-1 md:grid-cols-2 gap-5'}`}>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-silver mb-1">
-              Email Address
-            </label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="john@example.com"
-              required
-              className="w-full bg-black/50 border-gold/50 text-silver"
-            />
-          </div>
-          
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-silver mb-1">
-              Phone Number
-            </label>
-            <Input
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+40 700 000 000"
-              className="w-full bg-black/50 border-gold/50 text-silver"
-            />
-          </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-silver mb-1">
+            Email Address
+          </label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="john@example.com"
+            required
+            className="w-full bg-black/50 border-gold/50 text-silver"
+          />
         </div>
         
         <div>
