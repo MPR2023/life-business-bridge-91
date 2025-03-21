@@ -35,5 +35,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
-          local-dir: dist            # Change if your build output folder has a different name
+          local-dir: dist/           # Change if your build output folder has a different name
           server-dir: ${{ secrets.FTP_PATH }}  # This should be 'public_html'
