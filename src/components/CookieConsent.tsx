@@ -2,15 +2,17 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { FileText } from "lucide-react";
+import { Link } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast";
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has already accepted cookies
-    const hasAccepted = localStorage.getItem("cookiesAccepted");
-    if (!hasAccepted) {
-      // Show cookie banner after a small delay
+    // Check if user has already made a cookie choice
+    const hasConsent = localStorage.getItem("cookiesAccepted");
+    if (hasConsent === null) {
+      // Show cookie message after a small delay
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 1000);
@@ -21,11 +23,22 @@ const CookieConsent = () => {
   const handleAccept = () => {
     localStorage.setItem("cookiesAccepted", "true");
     setIsVisible(false);
+    toast({
+      title: "Cookies accepted",
+      description: "Thank you for accepting our cookie policy.",
+      duration: 3000,
+    });
   };
 
   const handleDecline = () => {
-    // Exit the website by redirecting to a different site
-    window.location.href = "https://www.google.com";
+    localStorage.setItem("cookiesAccepted", "false");
+    setIsVisible(false);
+    toast({
+      title: "Cookies declined",
+      description: "You can still browse the site, but some features like sending messages may be limited.",
+      duration: 5000,
+      variant: "destructive"
+    });
   };
 
   if (!isVisible) return null;
@@ -40,13 +53,13 @@ const CookieConsent = () => {
           </p>
         </div>
         <div className="flex space-x-4">
-          <a 
-            href="/legal#cookie-policy" 
+          <Link 
+            to="/legal#cookie-policy" 
             className="inline-flex items-center justify-center text-sm text-gold hover:text-silver transition-colors"
           >
             <FileText className="h-4 w-4 mr-1" />
             Learn More
-          </a>
+          </Link>
           <Button 
             className="bg-black hover:bg-black text-gold border border-gold hover:text-silver hover:border-silver"
             onClick={handleAccept}
