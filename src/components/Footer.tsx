@@ -1,18 +1,17 @@
-
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Custom X icon (formerly Twitter)
 const XIcon = () => (
-  <svg 
-    viewBox="0 0 24 24" 
-    width="24" 
-    height="24" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    fill="none" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
+  <svg
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    stroke="currentColor"
+    strokeWidth="2"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className="h-5 w-5 text-gold"
   >
     <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
@@ -42,34 +41,34 @@ const Footer = () => {
             </p>
             
             <div className="flex space-x-3">
-              <a 
-                href="https://www.facebook.com/profile.php?id=61572141846128" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.facebook.com/profile.php?id=61572141846128"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
               >
                 <Facebook className="h-5 w-5 text-gold" />
               </a>
-              <a 
-                href="https://www.instagram.com/paul_n_cami/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.instagram.com/paul_n_cami/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
               >
                 <Instagram className="h-5 w-5 text-gold" />
               </a>
-              <a 
-                href="https://www.linkedin.com/company/paulandcami" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.linkedin.com/company/paulandcami"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
               >
                 <Linkedin className="h-5 w-5 text-gold" />
               </a>
-              <a 
-                href="https://x.com/_Coach_Paul_" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://x.com/_Coach_Paul_"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-black/30 hover:bg-gold border border-gold h-10 w-10 rounded-full flex items-center justify-center transition-colors duration-300"
               >
                 <XIcon />
@@ -102,11 +101,13 @@ const Footer = () => {
                 </a>
               </li>
               <li>
+                {/* Use Link for internal routing */}
                 <Link
                   to="/legal#cookie-policy"
-                  className="text-silver hover:text-gold transition-colors flex items-center">
+                  className="text-silver hover:text-gold transition-colors flex items-center"
+                >
                   <FileText className="h-4 w-4 mr-2" /> Legal & Privacy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -175,8 +176,15 @@ const Footer = () => {
           </div>
         </div>
         
+        {/* Footer Bottom */}
         <div className="pt-8 border-t border-gold/20 text-center text-silver/70">
-          <p>&copy; {currentYear} MPR Management 2019. All rights reserved. <a href="/legal" className="hover:text-gold transition-colors">Legal & Privacy</a></p>
+          <p>
+            &copy; {currentYear} MPR Management 2019. All rights reserved.{" "}
+            {/* Another Link to /legal */}
+            <Link to="/legal" className="hover:text-gold transition-colors">
+              Legal & Privacy
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
