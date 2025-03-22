@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <a href="#" className="flex items-center">
           <img 
-            src="/public/lovable-uploads/634ec27f-ca3c-41de-9de4-35135fa27955.png" 
+            src="lovable-uploads/634ec27f-ca3c-41de-9de4-35135fa27955.png" 
             alt="PAUL&CAMI" 
             className="h-10 w-auto"
           />
