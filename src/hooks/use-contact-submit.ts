@@ -4,7 +4,7 @@ import { useToast } from "@/components/ui/use-toast";
 
 const PAUL_EMAIL = "paul@paulandcami.com"; 
 const CAMI_EMAIL = "cami@paulandcami.com";
-const EMAIL_ENDPOINT = "https://yourwebsite.com/send-email.php";
+const EMAIL_ENDPOINT = "https://paulandcami.com/send-email.php";
 
 interface ContactFormData {
   name: string;
