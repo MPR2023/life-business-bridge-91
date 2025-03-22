@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,14 +79,12 @@ const Navbar = () => {
             >
               Testimonials
             </a>
-            <a 
-              href="/legal" 
-              className="text-silver hover:text-gold transition-colors duration-300 py-2 flex items-center"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FileText className="h-4 w-4 mr-2" />
-              Legal
-            </a>
+            <Link
+                  to="/legal#cookie-policy"
+                  className="text-silver hover:text-gold transition-colors flex items-center"
+                >
+                  <FileText className="h-4 w-4 mr-2" /> Legal & Privacy
+            </Link>
             <a 
               href="#contact"
               onClick={() => setIsMenuOpen(false)}
