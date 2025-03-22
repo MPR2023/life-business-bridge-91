@@ -173,7 +173,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-gold/20 text-center text-silver/70">
-          <p>&copy; {currentYear} Paul & Cami Coaching. All rights reserved. <a href="/legal" className="hover:text-gold transition-colors">Legal & Privacy</a></p>
+          <p>&copy; {currentYear} MPR Management 2019. All rights reserved. <a href="/legal" className="hover:text-gold transition-colors">Legal & Privacy</a></p>
         </div>
       </div>
     </footer>
