@@ -32,10 +32,11 @@ const Navbar = () => {
           <a href="#about" className="text-silver hover:text-gold transition-colors duration-300">About</a>
           <a href="#services" className="text-silver hover:text-gold transition-colors duration-300">Services</a>
           <a href="#testimonials" className="text-silver hover:text-gold transition-colors duration-300">Testimonials</a>
-          <a href="/legal" className="text-silver hover:text-gold transition-colors duration-300 flex items-center">
+          <Link to="/legal" className="text-silver hover:text-gold transition-colors duration-300 flex items-center">
             <FileText className="h-4 w-4 mr-1" />
             Legal
-          </a>
+            </Link>
+          </div>
           <a href="#contact">
             <Button className="bg-black text-gold border border-gold hover:bg-black hover:text-silver hover:border-silver transition-colors">Contact Us</Button>
           </a>
@@ -80,10 +81,10 @@ const Navbar = () => {
               Testimonials
             </a>
             <Link
-                  to="/legal#cookie-policy"
-                  className="text-silver hover:text-gold transition-colors flex items-center"
-                >
-                  <FileText className="h-4 w-4 mr-2" /> Legal & Privacy
+               to="/legal#cookie-policy"
+               className="text-silver hover:text-gold transition-colors flex items-center"
+            >
+               <FileText className="h-4 w-4 mr-2" /> Legal & Privacy
             </Link>
             <a 
               href="#contact"
