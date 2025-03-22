@@ -37,7 +37,7 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           local-dir: dist/
           server-dir: /
-          force-delete: true        # Force re-upload of everything
+          dangerous-clean-slate: true      
           log-level: verbose        # Show detailed logs
           exclude: |                # Exclude these patterns only
             **/.git*
