@@ -30,7 +30,7 @@ const Footer = () => {
           <div>
             <div className="mb-4">
               <img 
-                src="/public/lovable-uploads/634ec27f-ca3c-41de-9de4-35135fa27955.png" 
+                src="lovable-uploads/634ec27f-ca3c-41de-9de4-35135fa27955.png" 
                 alt="PAUL&CAMI" 
                 className="h-10 w-auto"
               />
