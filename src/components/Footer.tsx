@@ -102,7 +102,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/legal" className="text-silver hover:text-gold transition-colors flex items-center">
+                <Link
+                  to="/legal#cookie-policy"
+                  className="text-silver hover:text-gold transition-colors flex items-center">
                   <FileText className="h-4 w-4 mr-2" /> Legal & Privacy
                 </a>
               </li>
