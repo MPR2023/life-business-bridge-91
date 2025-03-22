@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, FileText } from "lucide-react";
@@ -35,24 +34,24 @@ const Navbar = () => {
           <Link to="/legal" className="text-silver hover:text-gold transition-colors duration-300 flex items-center">
             <FileText className="h-4 w-4 mr-1" />
             Legal
-            </Link>
-          </div>
-          <a href="#contact">
-            <Button className="bg-black text-gold border border-gold hover:bg-black hover:text-silver hover:border-silver transition-colors">Contact Us</Button>
-          </a>
+          </Link>
         </div>
 
-        {/* Mobile Navigation Button */}
-        <div className="md:hidden">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-silver"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
-        </div>
+        <a href="#contact">
+          <Button className="bg-black text-gold border border-gold hover:bg-black hover:text-silver hover:border-silver transition-colors">Contact Us</Button>
+        </a>
+      </div>
+
+      {/* Mobile Navigation Button */}
+      <div className="md:hidden">
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="text-silver"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </Button>
       </div>
 
       {/* Mobile Menu */}
@@ -83,6 +82,7 @@ const Navbar = () => {
             <Link
                to="/legal#cookie-policy"
                className="text-silver hover:text-gold transition-colors flex items-center"
+               onClick={() => setIsMenuOpen(false)}
             >
                <FileText className="h-4 w-4 mr-2" /> Legal & Privacy
             </Link>
