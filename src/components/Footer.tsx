@@ -1,5 +1,6 @@
 
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Custom X icon (formerly Twitter)
 const XIcon = () => (
