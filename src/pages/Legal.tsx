@@ -1,6 +1,4 @@
-
 import { useState, useEffect } from "react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Legal = () => {
@@ -23,8 +21,6 @@ const Legal = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-black text-silver">
-      <Navbar />
-      
       <main className="flex-grow pt-24 pb-16">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold mb-8 gold-gradient text-center">Legal Information</h1>
@@ -58,6 +54,7 @@ const Legal = () => {
           {/* Content Area */}
           <div className="bg-black/50 border border-gold/30 rounded-lg p-6 md:p-8">
             {activeTab === "privacy" && (
+              
               <div className="prose prose-invert max-w-none">
                 <h2 className="text-2xl font-bold mb-4 gold-gradient">Privacy Policy and GDPR Compliance Statement</h2>
                 <p className="text-silver mb-4">Last Updated: {currentDate}</p>
@@ -188,6 +185,7 @@ const Legal = () => {
             )}
             
             {activeTab === "cookie" && (
+              
               <div className="prose prose-invert max-w-none">
                 <h2 className="text-2xl font-bold mb-4 gold-gradient">Cookie Compliance Statement</h2>
                 
