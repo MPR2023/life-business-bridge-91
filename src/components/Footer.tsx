@@ -1,3 +1,4 @@
+
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -81,24 +82,24 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 gold-gradient">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="text-silver hover:text-gold transition-colors">
+                <Link to="/#about" className="text-silver hover:text-gold transition-colors">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-silver hover:text-gold transition-colors">
+                <Link to="/#services" className="text-silver hover:text-gold transition-colors">
                   Our Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#testimonials" className="text-silver hover:text-gold transition-colors">
+                <Link to="/#testimonials" className="text-silver hover:text-gold transition-colors">
                   Testimonials
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="text-silver hover:text-gold transition-colors">
+                <Link to="/#contact" className="text-silver hover:text-gold transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
                 {/* Use Link for internal routing */}
