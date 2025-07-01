@@ -74,14 +74,24 @@ const Navbar = () => {
             <FileText className="h-4 w-4 mr-1" />
             Legal
           </Link>
+          <Link to="/blog" className="text-silver hover:text-gold transition-colors duration-300">
+            Blog
+          </Link>
         </div>
 
-        <Button 
-          onClick={() => handleSectionClick('contact')} 
-          className="bg-black text-gold border border-gold hover:bg-black hover:text-silver hover:border-silver transition-colors"
-        >
-          Contact Us
-        </Button>
+        <div className="hidden md:flex items-center space-x-4">
+          <Link to="/blog">
+            <Button className="bg-black text-gold border border-gold hover:bg-black hover:text-silver hover:border-silver transition-colors">
+              Blog
+            </Button>
+          </Link>
+          <Button 
+            onClick={() => handleSectionClick('contact')} 
+            className="bg-black text-gold border border-gold hover:bg-black hover:text-silver hover:border-silver transition-colors"
+          >
+            Contact Us
+          </Button>
+        </div>
       </div>
 
       {/* Mobile Navigation Button */}
@@ -124,6 +134,13 @@ const Navbar = () => {
                onClick={() => setIsMenuOpen(false)}
             >
                <FileText className="h-4 w-4 mr-2" /> Legal & Privacy
+            </Link>
+            <Link
+               to="/blog"
+               className="text-silver hover:text-gold transition-colors py-2"
+               onClick={() => setIsMenuOpen(false)}
+            >
+               Blog
             </Link>
             <Button 
               onClick={() => handleSectionClick('contact')} 

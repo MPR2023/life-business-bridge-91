@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Legal from "./pages/Legal";
+import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
 
@@ -25,6 +26,7 @@ const App = () => {
               <Route element={<Layout />}>
                 <Route index element={<Index />} />
                 <Route path="legal" element={<Legal />} />
+                <Route path="blog" element={<Blog />} />
               </Route>
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
