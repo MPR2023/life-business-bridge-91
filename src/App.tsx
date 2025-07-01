@@ -9,9 +9,10 @@ import Index from "./pages/Index";
 import Legal from "./pages/Legal";
 import Blog from "./pages/Blog";
 import BlogIndex from "./pages/blog/BlogIndex";
-import BusinessCoaching from "./pages/blog/BusinessCoaching";
-import LifeCoaching from "./pages/blog/LifeCoaching";
-import AIImplementations from "./pages/blog/AIImplementations";
+import BusinessCoachingIndex from "./pages/blog/business-coaching";
+import WhatIsBusinessCoaching from "./pages/blog/business-coaching/WhatIsBusinessCoaching";
+import LifeCoachingIndex from "./pages/blog/life-coaching";
+import AIImplementationsIndex from "./pages/blog/ai-implementations";
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
 
@@ -31,10 +32,19 @@ const App = () => {
                 <Route index element={<Index />} />
                 <Route path="legal" element={<Legal />} />
                 <Route path="blog" element={<Blog />}>
-                  <Route path="" element={<BlogIndex />} />
-                  <Route path="business-coaching" element={<BusinessCoaching />} />
-                  <Route path="life-coaching" element={<LifeCoaching />} />
-                  <Route path="ai-implementations" element={<AIImplementations />} />
+                  <Route index element={<BlogIndex />} />
+                  <Route path="business-coaching">
+                    <Route index element={<BusinessCoachingIndex />} />
+                    <Route path="what-is-business-coaching" element={<WhatIsBusinessCoaching />} />
+                  </Route>
+                  <Route path="life-coaching">
+                    <Route index element={<LifeCoachingIndex />} />
+                    {/* future posts */}
+                  </Route>
+                  <Route path="ai-implementations">
+                    <Route index element={<AIImplementationsIndex />} />
+                    {/* future posts */}
+                  </Route>
                 </Route>
               </Route>
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
