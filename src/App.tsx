@@ -12,6 +12,7 @@ import BlogIndex from "./pages/blog/BlogIndex";
 import BusinessCoachingIndex from "./pages/blog/business-coaching";
 import WhatIsBusinessCoaching from "./pages/blog/business-coaching/WhatIsBusinessCoaching";
 import LifeCoachingIndex from "./pages/blog/life-coaching";
+import WhatIsLifeCoaching from "./pages/blog/life-coaching/what-is-life-coaching";
 import AIImplementationsIndex from "./pages/blog/ai-implementations";
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
@@ -39,7 +40,7 @@ const App = () => {
                   </Route>
                   <Route path="life-coaching">
                     <Route index element={<LifeCoachingIndex />} />
-                    {/* future posts */}
+                    <Route path="what-is-life-coaching" element={<WhatIsLifeCoaching />} />
                   </Route>
                   <Route path="ai-implementations">
                     <Route index element={<AIImplementationsIndex />} />
