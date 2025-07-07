@@ -2,7 +2,13 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
-const posts = [];
+const posts = [
+  {
+    slug: "what-is-life-coaching",
+    title: "What Is Life Coaching?",
+    excerpt: "Life coaching is a forward-focused, performance-driven partnership … allowing clients to tap into guidance at their moment of need."
+  }
+];
 
 const LifeCoachingIndex = () => {
   return (
