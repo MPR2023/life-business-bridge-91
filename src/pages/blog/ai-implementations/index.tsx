@@ -2,7 +2,13 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
-const posts = [];
+const posts = [
+  {
+    slug: "what-is-ai-implementation-in-business",
+    title: "What Is AI Implementation in Business?",
+    excerpt: "AI implementation isn't just plugging in a model. It's a 360° programme blending strategy, tech stack, and change-management—underpinned by safe-by-design practices."
+  }
+];
 
 const AIImplementationsIndex = () => {
   return (
